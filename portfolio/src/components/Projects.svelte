@@ -1,11 +1,22 @@
 <script>
-import Javabot from "./Javabot.svelte";
+    import Javabot from "./projects/Javabot.svelte";
+    import ReefBuddy from "./projects/ReefBuddy.svelte";
 
-    let project = undefined;
+    import { createEventDispatcher } from "svelte";
+import MyFitnessFriend from "./projects/MyFitnessFriend.svelte";
+
+    export let project;
+
+    const dispatch = createEventDispatcher();
+
+    //Opens the selected project
     function selectProject(event) {
-        project = event.target.id
+        const selectedProject = event.target.id
             ? event.target.id
             : event.target.parentElement.id;
+        dispatch("message", {
+            project: selectedProject,
+        });
     }
 </script>
 
@@ -13,7 +24,13 @@ import Javabot from "./Javabot.svelte";
     <!-- Shows the expanded project card if one is selected -->
     {#if project}
         <div id="expanded_projects">
-            <Javabot/>
+            {#if project === "java_bot"}
+                <Javabot />
+            {:else if project === "reef_buddy"}
+                <ReefBuddy />
+            {:else if project === "fitness_friend"}
+                <MyFitnessFriend/>
+            {/if}
         </div>
     {/if}
 
@@ -21,7 +38,7 @@ import Javabot from "./Javabot.svelte";
     {#if !project}
         <div id="project_wrapper">
             <div on:click={selectProject} id="java_bot" class="project_card">
-                <p>JavaBot</p>
+                <p class="card_header">JavaBot</p>
                 <img
                     class="image"
                     alt="discord logo"
@@ -29,7 +46,7 @@ import Javabot from "./Javabot.svelte";
                 />
             </div>
             <div on:click={selectProject} id="reef_buddy" class="project_card">
-                <p>Reef Buddy</p>
+                <p class="card_header">Reef Buddy</p>
                 <img
                     class="image"
                     alt="coral logo"
@@ -41,7 +58,7 @@ import Javabot from "./Javabot.svelte";
                 id="fitness_friend"
                 class="project_card"
             >
-                <p>MyFitnessFriend</p>
+                <p class="card_header">MyFitnessFriend</p>
                 <img
                     class="image"
                     alt="fitness logo"
@@ -53,8 +70,17 @@ import Javabot from "./Javabot.svelte";
 </main>
 
 <style>
+    @keyframes easeIn {
+        0% {
+            transform: scale(0.75);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
     #project_wrapper {
         display: flex;
+        animation: 300ms ease-in-out 0s 1 easeIn;
     }
     #expanded_projects {
         display: flex;
@@ -81,6 +107,9 @@ import Javabot from "./Javabot.svelte";
         cursor: pointer;
         box-shadow: rgb(48, 60, 68) 0px 20px 30px -10px;
         transform: translateY(-0.25rem);
+    }
+    .card_header {
+        font-size: large;
     }
     p {
         margin: 0;

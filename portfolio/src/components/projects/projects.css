@@ -1,0 +1,43 @@
+  @keyframes easeIn {
+        0% {
+            transform: scale(0.75);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .project_container {
+        animation: 300ms ease-in-out 0s 1 easeIn;
+        background-color: aliceblue;
+        border-radius: 5%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    .project_content {
+        font-size: 1.1rem;
+    }
+    .project_flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .project_header {
+        font-size: larger;
+    }
+    .github_logo {
+        justify-self:flex-end;
+    }
+    @media only screen and (max-width: 768px) {
+        .project_container {
+            max-width: 80vw;
+            min-width: 90vw;
+            max-height: 55vh;
+        }
+    }
+    @media only screen and (min-width: 768px) {
+        .project_container {
+            max-width: 50vw;
+            max-height: 40vh;
+            min-width: 50vw;
+        }
+    }

@@ -4,7 +4,6 @@
     const dispatch = createEventDispatcher();
 
     function navigate(event) {
-        console.log(event);
         dispatch("message", {
             target: event.target.id,
         });
@@ -14,13 +13,15 @@
 <nav id="navigator_wrapper">
     <div id="navigator">
         <p id="navigator_header">More Info</p>
-        <button on:click={navigate} id="about_button">About Me</button>
-        <button on:click={navigate} id="project_button">Projects</button>
+        <a on:click={navigate} id="about_button">About Me</a>
+        <a on:click={navigate} id="project_button">Projects</a>
+        <a target="_blank" href="https://www.linkedin.com/in/Colby-Z-Wang">LinkedIn</a>
+        <a target="_blank" href="https://www.github.com/ColbyZW">GitHub</a>
     </div>
 </nav>
 
 <style>
-    button {
+    a {
         text-decoration: none;
         color: aliceblue;
         display: block;
@@ -29,10 +30,10 @@
         border: 0;
         font-size: 1rem;
         font-family: "Courier New", Courier, monospace;
-        margin: 0;
+        margin: 0.5rem;
         padding: 0;
     }
-    button:hover {
+    a:hover {
         text-decoration: underline;
         cursor: pointer;
     }

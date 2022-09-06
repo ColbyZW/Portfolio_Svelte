@@ -3,27 +3,54 @@
   import Navigator from "./components/Navigator.svelte";
   import Projects from "./components/Projects.svelte";
 
-  let current_page = "about";
+  let currentPage = "about";
+  let currentProject = undefined;
 
   function handleClick(event) {
     const target = event.detail.target;
     switch (target) {
       case "about_button":
-        current_page = "about";
+        currentPage = "about";
+        currentProject=undefined;
         break;
       case "project_button":
-        current_page = "projects";
+        currentPage = "projects";
         break;
+    }
+  }
+
+  function setProject(event) {
+      if(verifyProject(event.detail.project)) {
+      currentProject = event.detail.project;
+      }
+  }
+
+  function verifyProject(project) {
+    switch (project) {
+      case "java_bot" :
+        return true;
+      case "reef_buddy":
+        return true;
+      case "fitness_friend":
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function handleOutsideClick(event) {
+    if(event.target.id == "main_container") {
+      currentProject = undefined;
     }
   }
 </script>
 
 <main id="content_wrapper">
-  <div id="main_container">
-    {#if current_page === "about"}
+  <div id="main_container" on:click={handleOutsideClick}>
+    {#if currentPage === "about"}
       <Header />
-    {:else if current_page === "projects"}
-      <Projects />
+    {:else if currentPage === "projects"}
+      <Projects project={currentProject} on:message={setProject}/>
     {/if}
     <Navigator on:message={handleClick} />
   </div>
@@ -39,6 +66,7 @@
     }
     #main_container {
       display: flex;
+      height: 100vh;
     }
   @media only screen and (max-width: 768px) {
     #main_container {
@@ -57,6 +85,8 @@
     #main_container {
       flex-direction: row;
       justify-content: space-evenly;
+      align-content: center;
+      align-items: center;
       width: 80vw;
     }
   }
