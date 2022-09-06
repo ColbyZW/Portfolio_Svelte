@@ -8,10 +8,10 @@
 
   function handleClick(event) {
     const target = event.detail.target;
+    currentProject=undefined;
     switch (target) {
       case "about_button":
         currentPage = "about";
-        currentProject=undefined;
         break;
       case "project_button":
         currentPage = "projects";
