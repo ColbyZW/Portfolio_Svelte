@@ -30,7 +30,6 @@
         border: 0;
         font-size: 1rem;
         font-family: "Courier New", Courier, monospace;
-        margin-bottom: 0.6rem;
         padding: 0;
     }
     a:hover {
@@ -53,11 +52,14 @@
         #navigator_header {
             display:none;
         }
+        a {
+            text-decoration: underline;
+        }
     }
 
     @media only screen and (min-width: 768px) {
-        button {
-            margin-bottom: 1rem;
+        a {
+            margin-bottom: 0.6rem;
         }
         #navigator {
             flex-direction: column;
