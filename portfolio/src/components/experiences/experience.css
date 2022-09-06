@@ -1,0 +1,40 @@
+@keyframes easeIn {
+    0% {
+        transform: scale(0.75);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.experience_modal {
+    animation: 300ms ease-in-out 0s 1 easeIn;
+    background-color: aliceblue;
+    border-radius: 5%;
+    padding: 1.5rem;
+    margin: 1rem;
+}
+.experience_content {
+    font-size: 1.1rem;
+}
+.experience_flex {
+    display: flex;
+    flex-direction: column;
+}
+.exp_header {
+    font-size: larger;
+}
+@media only screen and (max-width: 768px) {
+    .experience_modal {
+        max-width: 80vw;
+        min-width: 90vw;
+        max-height: 55vh;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .experience_modal {
+        max-width: 50vw;
+        max-height: 40vh;
+        min-width: 50vw;
+        border-radius: 0.75%;
+    }
+}

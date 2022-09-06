@@ -6,13 +6,15 @@
 
   let currentPage = "about";
   let currentProject = undefined;
+  let currentExperience = undefined;
 
   //Handles click events that are sent by the Navigator component
-  //Sets the current project to undefined since we clicked on the nav
+  //Sets the current project/experience to undefined since we clicked on the nav
   //Sets the current page to whatever was passed in through the dispatch event
   function handleClick(event) {
     const target = event.detail.target;
     currentProject = undefined;
+    currentExperience = undefined;
     switch (target) {
       case "about_button":
         currentPage = "about";
@@ -33,6 +35,13 @@
     }
   }
 
+  //Sets the current experience modal
+  function setExperience(event) {
+    if(verifyExperience(event.detail.experience)) {
+      currentExperience = event.detail.experience;
+    }
+  }
+
   //Verifies that a project was actually clicked on
   function verifyProject(project) {
     switch (project) {
@@ -47,10 +56,21 @@
     }
   }
 
-  //Handles clicking outside of the project modal and closes the modal
+  //Verifies that an experience was actually clicked on
+  function verifyExperience(experience) {
+    switch (experience) {
+      case "vast":
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  //Handles clicking outside of modals and closes the modal
   function handleOutsideClick(event) {
     if (event.target.id == "main_container") {
       currentProject = undefined;
+      currentExperience = undefined;
     }
   }
 </script>
@@ -62,7 +82,7 @@
     {:else if currentPage === "projects"}
       <Projects project={currentProject} on:message={setProject} />
     {:else if currentPage === "experience"}
-      <Experience />
+      <Experience experience={currentExperience} on:message={setExperience}/>
     {/if}
     <Navigator on:message={handleClick} />
   </div>

@@ -18,7 +18,6 @@
         <a tabindex=0 on:click={navigate} id="project_button">Projects</a>
         <a tabindex=0 on:click={navigate} id="experience">Experience</a>
         <a tabindex=0 target="_blank" href="https://www.linkedin.com/in/Colby-Z-Wang">LinkedIn</a>
-        <a tabindex=0 target="_blank" href="https://www.github.com/ColbyZW">GitHub</a>
     </div>
 </nav>
 
