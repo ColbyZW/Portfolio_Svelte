@@ -15,7 +15,9 @@
         <p id="navigator_header">More Info</p>
         <a on:click={navigate} id="about_button">About Me</a>
         <a on:click={navigate} id="project_button">Projects</a>
-        <a target="_blank" href="https://www.linkedin.com/in/Colby-Z-Wang">LinkedIn</a>
+        <a target="_blank" href="https://www.linkedin.com/in/Colby-Z-Wang"
+            >LinkedIn</a
+        >
         <a target="_blank" href="https://www.github.com/ColbyZW">GitHub</a>
     </div>
 </nav>
@@ -50,7 +52,7 @@
             margin-top: 1rem;
         }
         #navigator_header {
-            display:none;
+            display: none;
         }
         a {
             text-decoration: underline;

@@ -1,9 +1,9 @@
 <script>
     import Javabot from "./projects/Javabot.svelte";
     import ReefBuddy from "./projects/ReefBuddy.svelte";
+    import MyFitnessFriend from "./projects/MyFitnessFriend.svelte";
 
     import { createEventDispatcher } from "svelte";
-import MyFitnessFriend from "./projects/MyFitnessFriend.svelte";
 
     export let project;
 
@@ -29,7 +29,7 @@ import MyFitnessFriend from "./projects/MyFitnessFriend.svelte";
             {:else if project === "reef_buddy"}
                 <ReefBuddy />
             {:else if project === "fitness_friend"}
-                <MyFitnessFriend/>
+                <MyFitnessFriend />
             {/if}
         </div>
     {/if}
