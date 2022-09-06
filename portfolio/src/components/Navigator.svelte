@@ -30,7 +30,7 @@
         border: 0;
         font-size: 1rem;
         font-family: "Courier New", Courier, monospace;
-        margin: 0.5rem;
+        margin-bottom: 0.6rem;
         padding: 0;
     }
     a:hover {
