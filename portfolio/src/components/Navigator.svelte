@@ -53,9 +53,6 @@
         #navigator_header {
             display: none;
         }
-        a {
-            text-decoration: underline;
-        }
     }
 
     @media only screen and (min-width: 768px) {
