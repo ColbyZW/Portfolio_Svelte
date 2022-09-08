@@ -72,7 +72,7 @@
 <style>
     @keyframes easeIn {
         0% {
-            transform: scale(0.75);
+            transform: scale(0.8);
         }
         100% {
             transform: scale(1);

@@ -18,22 +18,38 @@ import VaSt from "./experiences/VaST.svelte";
 
 </script>
 
-
-<div id="experience_wrapper">
+<main>
+<div>
     {#if experience}
+    <div id="expanded_experience">
         {#if experience === "vast"}
             <VaSt/>
         {/if}
+        </div>
     {/if}
     {#if !experience}
+    <div id="experience_wrapper">
     <div on:click={selectExperience} class="experience_container" id="vast">
         <div class="experience_header">Virginia Systems and Technology</div>
     </div>
+    </div>
     {/if}
 </div>
-
+</main>
 
 <style>
+    @keyframes easeIn {
+        0% {
+            transform: scale(0.8);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    #experience_wrapper {
+        display: flex;
+        animation: 300ms ease-in-out 0s 1 easeIn;
+    }
     .experience_container {
         background-color: aliceblue;
         border-radius: 5%;
@@ -44,6 +60,14 @@ import VaSt from "./experiences/VaST.svelte";
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+    }
+    #expanded_experience {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        margin: 1rem;
     }
     .experience_header {
         font-size: larger;
